@@ -6,12 +6,15 @@
   const result = ref(0);
 
   const sendPlus = async() => {
-    const response = await fetch(`http://localhost:7777/plus?num1=${num1.value}&num2=${num2.value}`);
+
+    /* 백엔드를 도커 컨테이너로 8085포트로 만들었을 때 */
+    const response = await fetch(`http://localhost:8085/plus?num1=${num1.value}&num2=${num2.value}`);
+    // const response = await fetch(`http://localhost:7777/plus?num1=${num1.value}&num2=${num2.value}`);
     // const response = await fetch(`http://localhost:5173/api/plus?num1=${num1.value}&num2=${num2.value}`);
     const data = await response.json();
     result.value = data.sum;
   }
-</script>
+</script>``
 
 <template>
   <div class="plus">
