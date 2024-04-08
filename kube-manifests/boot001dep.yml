@@ -1,0 +1,22 @@
+# deployment 파일은 어떤 이미지로 컨테이너들을 몇개 관리할 지 정의하는 파일
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boot001dep  # 파일명과 동일하게 사용한다
+spec:
+  selector:
+    matchLabels:
+      app: boot001kube
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: boot001kube
+    spec:
+      containers:
+      - name: boot-container
+        image: t4e1/k8s_b_proj:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7777
